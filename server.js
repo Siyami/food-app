@@ -8,6 +8,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const users = require('./routes/users');
+const token = require('./routes/token');
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join('public')));
 
 app.use(users);
-// app.use(meals);
+app.use(token);
 
 app.use((_req, res) => {
   res.sendStatus(404);
