@@ -1,12 +1,16 @@
 'use strict';
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 
-const port = process.env.PORT || 8000;
+// const port = process.env.PORT || 8000;
 
 const users = require('./routes/users');
 
@@ -16,8 +20,11 @@ app.disable('x-powered-by');
 
 app.use(express.static(path.join('public')));
 
-app.use(users);
+// app.use(users);
 // app.use(meals);
+app.use('/api', require('./routes/users'));
+app.use('/api', require('./routes/token'));
+// app.use('/api', require('./routes/meals'));
 
 app.use((_req, res) => {
   res.sendStatus(404);
