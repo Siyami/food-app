@@ -19,7 +19,7 @@ app.use(morgan('short'));
 app.use(bodyParser.json());
 app.disable('x-powered-by');
 
-app.use(express.static(path.join('public')));
+// app.use(express.static(path.join('public')));
 
 // app.use(users);
 // app.use(meals);
