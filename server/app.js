@@ -12,7 +12,8 @@ const bodyParser = require('body-parser');
 
 // const port = process.env.PORT || 8000;
 
-const users = require('./routes/users');
+// const users = require('./routes/users');
+// const token = require('./routes/token');
 
 app.use(morgan('short'));
 app.use(bodyParser.json());
@@ -42,8 +43,8 @@ app.use((err, _req, res, _next) => {
   res.sendStatus(500);
 });
 
-app.listen(port, () => {
-  console.log('Listening on port', port);
-});
+// app.listen(port, () => {
+//   console.log('Listening on port', port);
+// });
 
 module.exports = app;
