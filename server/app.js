@@ -27,6 +27,12 @@ app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/token'));
 // app.use('/api', require('./routes/meals'));
 
+app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+});
+
 app.use((_req, res) => {
   res.sendStatus(404);
 });
