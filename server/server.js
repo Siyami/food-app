@@ -1,32 +1,23 @@
 'use strict';
 
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
-
 const express = require('express');
-const path = require('path');
-const port = process.env.PORT || 3000;
-
 const morgan = require('morgan');
+const path = require('path');
+const app = express();
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+
+const port = process.env.PORT || 8000;
 
 const users = require('./routes/users');
-const token = require('./routes/token');
-
-const app = express();
-
-app.disable('x-powered-by');
 
 app.use(morgan('short'));
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.disable('x-powered-by');
 
 app.use(express.static(path.join('public')));
 
 app.use(users);
-app.use(token);
+// app.use(meals);
 
 app.use((_req, res) => {
   res.sendStatus(404);
