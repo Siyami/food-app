@@ -10,22 +10,12 @@ const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 
-// const port = process.env.PORT || 8000;
-
-// const users = require('./routes/users');
-// const token = require('./routes/token');
-
 app.use(morgan('short'));
 app.use(bodyParser.json());
 app.disable('x-powered-by');
 
-// app.use(express.static(path.join('public')));
-
-// app.use(users);
-// app.use(meals);
 app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/token'));
-// app.use('/api', require('./routes/meals'));
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
@@ -48,9 +38,5 @@ app.use((err, _req, res, _next) => {
   console.error(err.stack);
   res.sendStatus(500);
 });
-
-// app.listen(port, () => {
-//   console.log('Listening on port', port);
-// });
 
 module.exports = app;
