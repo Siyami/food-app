@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
-import { Navbar, Button, Nav, NavItem, Grid, Row, Col } from 'react-bootstrap';
+import './../App.css';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 class App extends Component {
   render() {
     return (
       <div>
+
           <Navbar className="Navbar" inverse collapseOnSelect>
             <Navbar.Header>
               <Navbar.Brand>
@@ -25,23 +26,9 @@ class App extends Component {
             </Navbar.Collapse>
           </Navbar>
 
-          <Grid>
-            <Row>
-              <Col xs={6} xsOffset={5}>
-                <Button bsStyle="primary">Search Meal</Button>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={6} xsOffset={5}>
-                <Button bsStyle="primary">Search Exercise</Button>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={6} xsOffset={5}>
-                <Button bsStyle="primary">View Details</Button>
-              </Col>
-            </Row>
-          </Grid>
+          {/* this.props.children lets all children to be shown inside App component */}
+          {this.props.children}
+
 
       </div>
     );
