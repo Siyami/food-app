@@ -10,7 +10,7 @@ class App extends Component {
           <Navbar className="Navbar" inverse collapseOnSelect>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="#">Food App</a>
+                <a href="/">Food App</a>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>

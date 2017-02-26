@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Button, Grid, Row, Col } from 'react-bootstrap';
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
 
 class Home extends Component {
   render() {
     return (
       <div>
 
-
           <Grid>
             <Row>
               <Col xs={6} xsOffset={5}>
-                <Button bsStyle="primary">Search Meal</Button>
+                <Link to="/searchmeal" >
+                  <Button bsStyle="primary">Search Meal</Button>
+                </Link>
               </Col>
             </Row>
             <Row>
