@@ -9,10 +9,12 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 app.use(morgan('short'));
 app.use(bodyParser.json());
 app.disable('x-powered-by');
+app.use(cookieParser());
 
 app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/token'));
