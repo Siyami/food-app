@@ -17,7 +17,9 @@ class Home extends Component {
             </Row>
             <Row>
               <Col xs={6} xsOffset={5}>
+                <Link to="/searchexercise" >
                 <Button bsStyle="primary">Search Exercise</Button>
+              </Link>
               </Col>
             </Row>
             <Row>

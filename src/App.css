@@ -26,3 +26,7 @@
 .Navbar {
   background-color: red;
 }
+
+.responsive {
+  border: 5px solid red;
+}

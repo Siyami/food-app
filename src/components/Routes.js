@@ -5,6 +5,7 @@ import App from './App.js';
 import Home from './Home.js';
 import SearchMeal from './SearchMeal';
 import Login from './Login';
+import SearchExercise from './SearchExercise';
 
 export default (
   <Route path="/" component={App}>
@@ -12,5 +13,6 @@ export default (
 
     <Route path="searchmeal" component={SearchMeal}/>
     <Route path="login" component={Login} />
+    <Route path="searchexercise" component={SearchExercise}/>
   </Route>
 );
