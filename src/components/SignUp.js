@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { Grid, Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Grid, FormGroup, Button, Col, Form, ControlLabel, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-class Login extends Component {
+class SignUp extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
+      firstName: '',
+      lastName: '',
       email: '',
       password: ''
-    };
+    }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,29 +31,23 @@ class Login extends Component {
 
     axios({
       method: 'post',
-      url: '/api/token',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      url: '/api/users',
       data: {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
         email: this.state.email,
         password: this.state.password
       }
     })
     .then((res) => {
-      console.log(res);
-      this.props.setStateFromLoginComponent()
-      browserHistory.push('/')
 
+      //ASK ASK ASK
+      this.props.setStateFromLoginComponent()
+      console.log(res);
+      browserHistory.push('/')
     })
     .catch((err) => {
       console.log(err);
-    });
-
-    // Reset the form
-    this.setState({
-      password: '',
-      email: ''
     });
   }
 
@@ -59,6 +55,34 @@ class Login extends Component {
     return (
       <Grid>
         <Form onSubmit={this.handleSubmit} horizontal>
+          <FormGroup controlId="formHorizontalEmail">
+            <Col componentClass={ControlLabel} sm={2}>
+              First Name
+            </Col>
+            <Col sm={6}>
+              <FormControl
+                name="firstName"
+                type="text"
+                placeholder="First Name"
+                onChange={this.handleChange}
+                value={this.state.firstName}
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup controlId="formHorizontalEmail">
+            <Col componentClass={ControlLabel} sm={2}>
+              Last Name
+            </Col>
+            <Col sm={6}>
+              <FormControl
+                name="lastName"
+                type="text"
+                placeholder="Last Name"
+                onChange={this.handleChange}
+                value={this.state.lastName}
+              />
+            </Col>
+          </FormGroup>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>
               Email
@@ -92,14 +116,14 @@ class Login extends Component {
           <FormGroup>
             <Col smOffset={2} sm={10}>
               <Button type="submit">
-                Log in
+                Sign Up
               </Button>
             </Col>
           </FormGroup>
         </Form>
       </Grid>
-    )
+    );
   }
 }
 
-export default Login;
+export default SignUp;

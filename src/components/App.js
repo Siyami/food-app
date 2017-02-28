@@ -71,7 +71,7 @@ class App extends Component {
               <Nav pullRight>
 
                 <NavItem eventKey={1} onClick={() => browserHistory.push('/login')}>Log In</NavItem>
-                <NavItem eventKey={2} href="#">Sign Up</NavItem>
+                <NavItem eventKey={2} onClick={() => browserHistory.push('/signup')}>Sign Up</NavItem>
               </Nav>
             )}
 
