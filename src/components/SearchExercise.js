@@ -22,11 +22,12 @@ class SearchExercise extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
+    this.addExercise = this.addExercise.bind(this)
   }
 
   handleDateChange(date) {
     this.setState({
-      startDate: date
+      date: date
     });
     console.log(this.state.date);
   }
@@ -69,9 +70,17 @@ class SearchExercise extends Component {
     .catch((err) => {
       console.log(err);
     })
+
     this.setState({
       exerciseName: '',
     })
+  }
+
+  addExercise(event){
+    event.preventDefault()
+
+    console.log(this.state)
+    console.log(event.target.name)
   }
 
   render() {
@@ -132,7 +141,7 @@ class SearchExercise extends Component {
                         placeholderText="Click to select a date"
                         selected={this.state.date}
                         onChange={this.handleDateChange} />
-                        <Button bsStyle="success">Add Exercise</Button>
+                        <input onClick={this.addExercise}>Add Exercise</input>
                       </div>
                     </Col>
                   </Row>
