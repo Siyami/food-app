@@ -19,7 +19,6 @@ router.post('/token', (req, res, next) => {
       if (!row) {
         throw boom.create(400, 'Bad email or password');
       }
-
       user = camelizeKeys(row);
 
       return bcrypt.compare(req.body.password, user.hashedPassword);

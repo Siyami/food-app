@@ -30,3 +30,12 @@
 .responsive {
   border: 5px solid red;
 }
+
+.spacer {
+  margin-bottom: 10px;
+  align-content: space-between;
+}
+
+.navbar-inverse {
+  margin-bottom: 60px;
+}
