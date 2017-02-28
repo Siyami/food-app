@@ -23,8 +23,11 @@ class Home extends Component {
               </Col>
             </Row>
             <Row>
+
               <Col xs={6} xsOffset={5}>
+                <Link to="/summary" >
                 <Button bsStyle="primary">View Details</Button>
+              </Link>
               </Col>
             </Row>
           </Grid>

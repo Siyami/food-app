@@ -76,8 +76,7 @@ class SearchExercise extends Component {
     })
   }
 
-  addExercise(event){
-    event.preventDefault()
+  addExercise(){
 
     console.log(this.state)
     console.log(event.target.name)

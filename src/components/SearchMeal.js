@@ -82,7 +82,6 @@ class SearchMeal extends Component {
             </Col>
           </Row>
         </Grid>
-
         <div>
           {
             (this.state.photo)
