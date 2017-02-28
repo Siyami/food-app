@@ -7,6 +7,7 @@ import SearchMeal from './SearchMeal';
 import Login from './Login';
 import SearchExercise from './SearchExercise';
 import Summary from './Summary'
+import ExerciseLog from './ExerciseLog'
 
 import SignUp from './SignUp';
 
@@ -21,5 +22,6 @@ export default (
     <Route path="summary" component={Summary}/>
 
     <Route path="signup" component={SignUp} />
+    <Route path="exerciselog" component={ExerciseLog} />
   </Route>
 );

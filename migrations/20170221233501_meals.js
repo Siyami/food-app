@@ -1,6 +1,6 @@
 'use strict';
 
-exports.up = function(meals) {
+exports.up = function(knex) {
   return knex.schema.createTable('meals', (table) => {
     table.increments();
     table.integer('user_id');
@@ -9,9 +9,9 @@ exports.up = function(meals) {
     table.decimal('calories');
     table.decimal('protein');
     table.decimal('fat');
-    table.decimal('totalcarbs')
-    table.decimal('fiber')
-    table.decimal('sugars')
+    table.decimal('totalcarbs');
+    table.decimal('fiber');
+    table.decimal('sugars');
     table.timestamps(true, true);
   });
 };

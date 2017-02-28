@@ -20,27 +20,20 @@ router.get('/exercises', (_req, res, next) => {
 
 router.post('/exercises', (req, res, next) => {
   knex('exercises')
-    .insert(params(req))
-    .returning('*')
-    .then(posts => res.json(posts[0]))
-    .catch(err => next(err))
-    })
+    .insert({
+      date: req.body.date,
+      photo: req.body.photo,
+      exercise: req.body.exercise,
+      duration: req.body.duration,
+      calories: req.body.calories
+    }, '*')
     .then((exercises) => {
-      const exercise = exercises[0];
-
-      res.send(exercise);
+      res.send(exercises[0]);
     })
     .catch((err) => {
       next(err);
     });
+});
 
-function params(req) {
-  return {
-    id: req.body.id,
-    date: req.body.date,
-    photo: req.body.photo,
-    exercise: req.body.exercise,
-    duration: req.body.duration,
-    user_id: req.body.user_id
-  }
-}
+
+module.exports = router
