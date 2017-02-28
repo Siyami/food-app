@@ -143,15 +143,14 @@ class SearchExercise extends Component {
             { (this.state.exercise) ? (
               <Grid>
                 <Row>
-                  <Col xsHidden md={3}></Col>
-                  <Col md={6}>
+                  <Col xs={6} xsOffset={4} className="spacer">
                     <div>
                       <h2>
-                        {this.state.exercise}
+                        {this.state.exercise}!
                       </h2>
-                      <p>for</p>
-                      <p>{this.state.duration} minutes</p>
-                      <Image src={this.state.photo}
+
+                      <p>for {this.state.duration} minutes</p>
+                      <Image className="spacer" src={this.state.photo}
                         rounded
                         responsive />
                         <p>
