@@ -16,7 +16,7 @@ class SearchExercise extends Component {
       calories: '',
       duration: '',
       photo: '',
-      startDate: moment()
+      date: moment()
     };
 
     this.handleChange = this.handleChange.bind(this)
@@ -28,6 +28,7 @@ class SearchExercise extends Component {
     this.setState({
       startDate: date
     });
+    console.log(this.state.date);
   }
 
   handleChange(event) {
@@ -57,8 +58,6 @@ class SearchExercise extends Component {
       }
     })
     .then(({data}) => {
-      console.log(this.state.exerciseDuration);
-      console.log(data)
       this.setState({
         exercise: data.exercises[0].name,
         calories: data.exercises[0].nf_calories,
@@ -129,8 +128,9 @@ class SearchExercise extends Component {
                         `You burned {this.state.calories} calories!`
                       </p>
                       <DatePicker
+                        dateFormat="YYYY/MM/DD"
                         placeholderText="Click to select a date"
-                        selected={this.state.startDate}
+                        selected={this.state.date}
                         onChange={this.handleDateChange} />
                         <Button bsStyle="success">Add Exercise</Button>
                       </div>
