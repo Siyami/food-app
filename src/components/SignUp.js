@@ -54,7 +54,7 @@ class SignUp extends Component {
   render() {
     return (
       <Grid>
-        <Form onSubmit={this.handleSubmit} horizontal>
+        <Form onSubmit={this.handleSubmit} horizontal style={{margin: "10% 20%"}}>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>
               First Name
