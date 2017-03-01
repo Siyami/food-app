@@ -162,8 +162,8 @@ class SearchMeal extends Component {
                         <th>Sugar</th>
                         <th>Fiber</th>
                         <th>Protein</th>
-                        <th>Total Fat</th>
-                        <th>Total Calories</th>
+                        <th>Fat</th>
+                        <th>Calories</th>
                       </tr>
                     </thead>
                     <tbody>
