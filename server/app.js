@@ -20,6 +20,7 @@ app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/token'));
 app.use('/api', require('./routes/exercises'));
 
+
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 app.get('*', (req, res) => {
