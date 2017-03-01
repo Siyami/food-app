@@ -11,6 +11,8 @@ class ExerciseLog extends Component {
     this.state = {
       myExercises: []
     };
+
+    this.removeExerercise = this.removeExercise.bind(this)
   }
 
   componentWillMount () {
@@ -19,10 +21,28 @@ class ExerciseLog extends Component {
       this.setState({
         myExercises: data
       })
+      for (const variable of this.state.myExercises) {
+        console.log(variable.id);
+      }
+      console.log(this.state.myExercises);
     })
     .catch(function (error) {
       console.log(error);
     });
+  }
+
+  removeExercise(id){
+    axios.delete('api/exercises/'+id, {
+      id: id
+    })
+    for (const variable of this.state.myExercises) {
+      if(variable.id === id){
+        this.state.myExercises.splice(variable, 1)
+      }
+    }
+    this.setState({
+      myExercises: this.state.myExercises
+    })
   }
 
   render() {
@@ -66,7 +86,7 @@ class ExerciseLog extends Component {
                         <td>{ele.exercise}</td>
                         <td>{ele.duration} minutes</td>
                         <td>{ele.calories}</td>
-                        <td><Button><Glyphicon glyph="remove"/>Delete</Button></td>
+                        <td><Button onClick={() => this.removeExercise(ele.id)}><Glyphicon glyph="remove"/>Delete</Button></td>
                       </tr>
                     ))
                   }
