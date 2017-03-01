@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Table, Grid, Row, Col, Thumbnail, Button, DropdownButton, MenuItem } from 'react-bootstrap';
 import axios from 'axios';
 let moment = require('moment');
+import { browserHistory } from 'react-router';
 
 class SearchMeal extends Component {
-
   constructor(props) {
     super(props);
 
@@ -23,6 +23,7 @@ class SearchMeal extends Component {
     this.addItemToList = this.addItemToList.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.calc = this.calc.bind(this);
+    this.postMeal = this.postMeal.bind(this);
 
   }
 
@@ -52,7 +53,7 @@ class SearchMeal extends Component {
       }
     })
     .then(({data}) => {
-      console.log(data.foods[0]);
+      // console.log(data.foods[0]);
 
       this.setState({
         searchedMeal:
@@ -73,7 +74,17 @@ class SearchMeal extends Component {
         foodName: data.foods[0].food_name,
         servingUnit: data.foods[0].serving_unit,
         servingQuantity: data.foods[0].serving_qty,
-        date: moment()._d.toString().slice(0,15)
+        date: moment()._d.toString().slice(0,15),
+        totals: {
+          saturatedFat: 0,
+          sodium: 0,
+          carbonhydrate: 0,
+          sugar: 0,
+          fiber: 0,
+          protein: 0,
+          totalFat: 0,
+          calories: 0
+        }
       })
     })
     .catch((err) => {
@@ -88,18 +99,63 @@ class SearchMeal extends Component {
 
   addItemToList() {
     const newMeals = this.state.addedMeals.concat([this.state.searchedMeal])
+
+    const totals = {
+      saturatedFat: this.calc(newMeals, 'saturatedFat'),
+      sodium: this.calc(newMeals, 'sodium'),
+      carbonhydrate: this.calc(newMeals, 'carbonhydrate'),
+      sugar: this.calc(newMeals, 'sugar'),
+      fiber: this.calc(newMeals, 'fiber'),
+      protein: this.calc(newMeals, 'protein'),
+      totalFat: this.calc(newMeals, 'totalFat'),
+      calories: this.calc(newMeals, 'calories')
+    }
+
     this.setState({
-      addedMeals: newMeals
+      addedMeals: newMeals,
+      totals
     })
+
   }
 
   removeItem(meal) {
-    console.log(meal);
+    // console.log(meal);
     let index = this.state.addedMeals.indexOf(meal)
     const newArr = [...this.state.addedMeals]
     newArr.splice(index, 1)
+    const totals = {
+      saturatedFat: this.calc(newArr, 'saturatedFat'),
+      sodium: this.calc(newArr, 'sodium'),
+      carbonhydrate: this.calc(newArr, 'carbonhydrate'),
+      sugar: this.calc(newArr, 'sugar'),
+      fiber: this.calc(newArr, 'fiber'),
+      protein: this.calc(newArr, 'protein'),
+      totalFat: this.calc(newArr, 'totalFat'),
+      calories: this.calc(newArr, 'calories')
+
+    }
     this.setState({
-      addedMeals: newArr
+      addedMeals: newArr,
+      totals
+    })
+  }
+
+  // Post totals for a meal to meals table
+  postMeal() {
+    axios({
+      method: 'post',
+      url: '/api/meals',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: { totals: this.state.totals, date: moment()._d.toString().slice(0,15)}
+    })
+    .then((res) => {
+      console.log(res);
+      browserHistory.push('/')
+    })
+    .catch((err) => {
+      console.log(err);
     })
   }
 
@@ -185,18 +241,18 @@ class SearchMeal extends Component {
                       })}
                       <tr>
                           <td>Total</td>
-                          <td>{this.calc('saturatedFat')}</td>
-                          <td>{this.calc('sodium')}</td>
-                          <td>{this.calc('carbonhydrate')}</td>
-                          <td>{this.calc('sugar')}</td>
-                          <td>{this.calc('fiber')}</td>
-                          <td>{this.calc('protein')}</td>
-                          <td>{this.calc('totalFat')}</td>
-                          <td>{this.calc('calories')}</td>
+                          <td>{this.state.totals.saturatedFat}</td>
+                          <td>{this.state.totals.sodium}</td>
+                          <td>{this.state.totals.carbonhydrate}</td>
+                          <td>{this.state.totals.sugar}</td>
+                          <td>{this.state.totals.fiber}</td>
+                          <td>{this.state.totals.protein}</td>
+                          <td>{this.state.totals.totalFat}</td>
+                          <td>{this.state.totals.calories}</td>
                       </tr>
                     </tbody>
                   </Table>
-                  <Button bsStyle="primary">Save Meal</Button>
+                  <Button bsStyle="primary" onClick={() => {this.postMeal()}}>Save Meal</Button>
                 </Col>
               </Row>
             </Grid>)
@@ -210,13 +266,12 @@ class SearchMeal extends Component {
               </Grid>)
           }
         </div>
-
       </div>
     )
   }
-  calc(toAdd) {
-    return this.state.addedMeals.reduce((totalCals, meal) => {
-      return parseInt(totalCals + meal[toAdd])
+  calc(meals, toAdd) {
+    return meals.reduce((result, meal) => {
+      return (parseFloat(result) + parseFloat(meal[toAdd])).toFixed(2)
     }, 0)
   }
 }

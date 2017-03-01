@@ -20,27 +20,8 @@ router.get('/meals', (_req, res, next) => {
 
 router.post('/meals', (req, res, next) => {
 
-  const { date, saturatedFat, sodium, carbonhydrate, sugar, fiber, protein, totalFat, calories } = req.body;
-
-  // if (!title || !title.trim()) {
-  //   return next(boom.create(400, 'Title must not be blank'));
-  // }
-  //
-  // if (!author || !author.trim()) {
-  //   return next(boom.create(400, 'Author must not be blank'));
-  // }
-  //
-  // if (!genre || !genre.trim()) {
-  //   return next(boom.create(400, 'Genre must not be blank'));
-  // }
-  //
-  // if (!description || !description.trim()) {
-  //   return next(boom.create(400, 'Description must not be blank'));
-  // }
-  //
-  // if (!coverUrl || !coverUrl.trim()) {
-  //   return next(boom.create(400, 'Cover URL must not be blank'));
-  // }
+  const { saturatedFat, sodium, carbonhydrate, sugar, fiber, protein, totalFat, calories } = req.body.totals;
+  const { date } = req.body;
 
   const insertMeal = { user_id:req.claim.userId, date, saturatedFat, sodium, carbonhydrate, sugar, fiber, protein, totalFat, calories };
 

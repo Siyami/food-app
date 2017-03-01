@@ -36,12 +36,19 @@ class Login extends Component {
       data: {
         email: this.state.email,
         password: this.state.password
-      }
-    })
+      },
+       validateStatus: (status) => status < 500
+     })
     .then((res) => {
       console.log(res);
-      this.props.setStateFromLoginComponent()
-      browserHistory.push('/')
+
+      if(res.status < 400) {
+        this.props.setStateFromLoginComponent()
+        browserHistory.push('/')
+      }
+      else {
+        alert(res.data)
+      }
 
     })
     .catch((err) => {

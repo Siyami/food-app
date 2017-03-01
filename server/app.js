@@ -47,12 +47,12 @@ app.use((_req, res) => {
 });
 
 app.use((err, _req, res, _next) => {
-  if (err.status) {
-    return res
-      .status(err.status)
-      .set('Content-Type', 'text/plain')
-      .send(err.message);
-  }
+  if (err.output && err.output.statusCode) {
+     return res
+     .status(err.output.statusCode)
+       .set('Content-Type', 'text/plain')
+       .send(err.output.payload.message)
+   }
 
   console.error(err.stack);
   res.sendStatus(500);
