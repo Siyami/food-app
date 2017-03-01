@@ -39,3 +39,7 @@
 .navbar-inverse {
   margin-bottom: 60px;
 }
+
+.remove {
+  color: red;
+}

@@ -103,9 +103,10 @@ class SearchExercise extends Component {
         <Grid>
           <Row>
 
-            <Col xs={6} xsOffset={4} className="spacer">
+           <Col xs={6} xsOffset={4} className="spacer">
               <form onSubmit={this.handleSubmit}>
                 <div className="spacer">
+                  <h4>Activity:</h4>
                 <label>
                   <input name="exerciseName" onChange={this.handleChange}
                     type="text" value={this.state.exerciseName}/>

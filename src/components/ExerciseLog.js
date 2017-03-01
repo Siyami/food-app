@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './../App.css';
-import { Grid, Row, Col, Image, Table,} from 'react-bootstrap'
+import { Button, Grid, Row, Col, Image, Table, Glyphicon} from 'react-bootstrap'
 import axios from 'axios';
 import { Link } from 'react-router';
 
@@ -53,24 +53,23 @@ class ExerciseLog extends Component {
                     <th>Activity</th>
                     <th>Duration</th>
                     <th>Calories Burned</th>
-                    <th>Table heading</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
 
                   {
                     (this.state.myExercises).slice(0,50).map(ele => (
-                      <tr>
+                      <tr key={ele.id}>
                         <td>{ele.date}</td>
                         <td><Image src={ele.photo}/></td>
                         <td>{ele.exercise}</td>
-                        <td>{ele.duation} minutes</td>
+                        <td>{ele.duration} minutes</td>
                         <td>{ele.calories}</td>
-                        <td>Table cell</td>
+                        <td><Button><Glyphicon glyph="remove"/>Delete</Button></td>
                       </tr>
                     ))
                   }
-                  
                 </tbody>
               </Table>
             </Col>
