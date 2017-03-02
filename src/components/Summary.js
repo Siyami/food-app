@@ -20,51 +20,60 @@ class Summary extends Component {
     return (
       <div>
         <Grid>
-          <h3> Your weight maintenance calorie goal is 1700</h3>
           <Row>
-            <Col xs={6} md={4}>
-              <h4>Feb 26, 2017</h4>
-              <div>
-              <p>Calories consumed: 2000</p>
-              <p>Calories burned: 400</p>
-              <p>Result: -100</p>
-              <div>
-                <h5>Nutrient Totals</h5>
-                <p>Carbohydrate: 27g</p>
-                <p>Fat: 18g</p>
-                <p>Protein: 16g</p>
-                <p>Fiber: 5g</p>
-              </div>
+            <Col xs={12} md={8} mdOffset={3}>
+          <div style={{backgroundColor: "white", padding:"2%", width: "70%", borderRadius: "15px"}}>
+          <h3> Your weight maintenance calorie goal is 1700</h3>
+        </div>
+      </Col>
+    </Row>
+          <Row>
+            <Col xs={6} md={4} >
+              <div style={{backgroundColor: "white", padding:"5%", width: "70%", borderRadius: "15px", marginTop: "10%"}}>
+                <h4>Feb 26, 2017</h4>
+                <div>
+                  <h5 style={{fontWeight: "bold"}}>Nutrient Totals</h5>
+                  <p>Carbohydrate: 27g <br/>
+                  Fat: 18g <br/>
+                  Protein: 16g<br/>
+                  Fiber: 5g</p>
+                </div>
+                <h5 style={{fontWeight: "bold"}}>Energy Balance</h5>
+              <p>Calories consumed: 2000<br/>
+                 Calories burned: 400<br/>
+                 Result: <span style={{color: "green", fontSize: "30px"}}> -100</span></p>
             </div>
             </Col>
-            <Col xs={6} md={4}>
-              <h4>Feb 27, 2017</h4>
-              <div>
-              <p>Calories consumed: 3000</p>
-              <p>Calories burned: 100</p>
-              <p>Result: +1200</p>
-              <div>
-                <h5>Nutrient Totals</h5>
-                <p>Carbohydrate: 27g</p>
-                <p>Fat: 18g</p>
-                <p>Protein: 16g</p>
-                <p>Fiber: 5g</p>
-              </div>
+            <Col xs={6} md={4} >
+              <div style={{backgroundColor: "white", padding:"5%", width: "70%", borderRadius: "15px", marginTop: "10%"}}>
+                <h4>Feb 27, 2017</h4>
+                <div>
+                  <h5 style={{fontWeight: "bold"}}>Nutrient Totals</h5>
+                  <p>Carbohydrate: 27g <br/>
+                  Fat: 18g <br/>
+                  Protein: 16g<br/>
+                  Fiber: 5g</p>
+                </div>
+                <h5 style={{fontWeight: "bold"}}>Energy Balance</h5>
+              <p>Calories consumed: 3000<br/>
+                 Calories burned: 400<br/>
+                 Result: <span style={{color: "red", fontSize: "30px"}}>+500</span></p>
             </div>
             </Col>
-            <Col xs={6} md={4}>
-              <h4>Feb 28, 2017</h4>
-              <div>
-              <p>Calories consumed: 1900</p>
-              <p>Calories burned: 300</p>
-              <p>Result: -200</p>
-              <div>
-                <h5>Nutrient Totals</h5>
-                <p>Carbohydrate: 27g</p>
-                <p>Fat: 18g</p>
-                <p>Protein: 16g</p>
-                <p>Fiber: 5g</p>
-              </div>
+            <Col xs={6} md={4} >
+              <div style={{backgroundColor: "white", padding:"5%", width: "70%", borderRadius: "15px", marginTop: "10%"}}>
+                <h4>Feb 28, 2017</h4>
+                <div>
+                  <h5 style={{fontWeight: "bold"}}>Nutrient Totals</h5>
+                  <p>Carbohydrate: 27g <br/>
+                  Fat: 18g <br/>
+                  Protein: 16g<br/>
+                  Fiber: 5g</p>
+                </div>
+                <h5 style={{fontWeight: "bold"}}>Energy Balance</h5>
+              <p>Calories consumed: 2000<br/>
+                 Calories burned: 400<br/>
+                 Result: <span style={{color: "green", fontSize: "30px"}}>-100</span></p>
             </div>
             </Col>
           </Row>

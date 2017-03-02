@@ -34,12 +34,53 @@
 .spacer {
   margin-bottom: 10px;
   align-content: space-between;
+  text-align: center;
 }
 
-.navbar-inverse {
+.navbar-inverse.topnav {
   margin-bottom: 60px;
 }
 
-.remove {
-  color: red;
+.col-xs-4.col-xs-offset-4{
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+.exercise{
+  text-transform: capitalize;
+  font-weight: 800;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+.exercise-table td{
+  vertical-align: middle !important;
+}
+.background {
+  background-image: url("../public/images/markus-spiske-139525.jpg");
+  background-size: cover;
+  -webkit-filter: blur(0px) brightness(1.1) contrast(1.1) grayscale(0.1) hue-rotate(193deg) invert(0.1) opacity(100%) saturate(5) sepia(0.77) drop-shadow(0px 0px 5px #000)
+}
+ form {
+   text-align: center;
+ }
+ .form-control:active {
+border-color: darkorange;
+background-color: white;
+ }
+
+ button:active, button:focus{
+     outline:none !important
+ }
+
+.btn.btn-lg.btn-default {
+  border-color: darkorange;
+ }
+
+.list-group-item {
+  border-color: darkorange;
 }

@@ -67,9 +67,9 @@ class Login extends Component {
       <Grid>
         <Form onSubmit={this.handleSubmit} horizontal style={{margin: "10% 20%"}}>
           <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
+            {/* <Col componentClass={ControlLabel} sm={2}>
               Email
-            </Col>
+            </Col> */}
             <Col sm={6}>
               <FormControl
                 name="email"
@@ -82,9 +82,9 @@ class Login extends Component {
           </FormGroup>
 
           <FormGroup controlId="formHorizontalPassword">
-            <Col componentClass={ControlLabel} sm={2}>
+            {/* <Col componentClass={ControlLabel} sm={2}>
               Password
-            </Col>
+            </Col> */}
             <Col sm={6}>
               <FormControl
                 type="password"

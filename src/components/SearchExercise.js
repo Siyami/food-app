@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Image} from 'react-bootstrap'
+import { Grid, Row, Col, Image, Button, FormControl, ControlLabel, ListGroup, ListGroupItem} from 'react-bootstrap'
 import axios from 'axios';
 var moment = require('moment');
 
@@ -103,21 +103,20 @@ class SearchExercise extends Component {
         <Grid>
           <Row>
 
-           <Col xs={6} xsOffset={4} className="spacer">
+           <Col xs={6} xsOffset={3} className="spacer">
               <form onSubmit={this.handleSubmit}>
-                <div className="spacer">
-                  <h4>Activity:</h4>
-                <label>
-                  <input name="exerciseName" onChange={this.handleChange}
-                    type="text" value={this.state.exerciseName}/>
-                  </label>
-                </div>
-                <div className="spacer">
-                  <h4>Select Duration:</h4>
+                <div style={{textAlign: "left"}} className="spacer">
+
+
+                        <FormControl bsSize="large" type="text" placeholder="Jane Doe" style={{ width: "100%" }} name="exerciseName" onChange={this.handleChange}
+                          value={this.state.exerciseName}/>
+
                 </div>
                 <div className="spacer">
 
-                  <select
+                  <FormControl  componentClass="select"
+                    bsSize="large"
+                    style={{width: "70%", margin: "auto"}}
                     placeholder="select"
                     onChange={this.handleChange}
                     value={this.state.exerciseDuration}
@@ -129,10 +128,11 @@ class SearchExercise extends Component {
                     <option value=" 75 minutes">75 minutes</option>
                     <option value=" 90 minutes ">90 minutes</option>
                     <option value=" 120 minutes ">120 minutes</option>
-                  </select>
+
+                  </FormControl>
                 </div>
                 <div className="spacer">
-                  <input type="submit" value="Search" placeholder="enter an activity"/>
+                  <Button style={{ width: "50%" }} bsSize="large" bsStyle="warning" type="submit" value="Search" placeholder="enter an activity">Search</Button>
                 </div>
                 </form>
               </Col>
@@ -144,21 +144,21 @@ class SearchExercise extends Component {
             { (this.state.exercise) ? (
               <Grid>
                 <Row>
-                  <Col xs={6} xsOffset={4} className="spacer">
-                    <div>
-                      <h2>
+                  <Col xs={6} xsOffset={3} className="spacer">
+                    <div className="exercise">
+                      <h1>
                         {this.state.exercise}!
-                      </h2>
+                      </h1>
 
-                      <p>for {this.state.duration} minutes</p>
-                      <Image className="spacer" src={this.state.photo}
+                      <h3>for {this.state.duration} minutes</h3>
+                      <Image style={{ margin: "auto", width: "300px" }} className="spacer" src={this.state.photo}
                         rounded
                         responsive />
-                        <p>
-                          `You burned {this.state.calories} calories!`
-                        </p>
+                        <h2>
+                          You burned <p style={{ color: "red" }}> {this.state.calories} </p>calories
+                        </h2>
                         <a href="/exerciselog">
-                        <button onClick={this.addExercise}>Add Exercise</button>
+                        <Button style={{ width: "50%", marginBottom: "10px" }} bsSize="large" bsStyle="warning" onClick={this.addExercise}>Add Exercise</Button>
                       </a>
                       </div>
                     </Col>
@@ -167,10 +167,12 @@ class SearchExercise extends Component {
                 </Grid>
               )
               : (<Grid>
-                <Row className="show-grid">
-                  <Col xs={6} xsOffset={4}>
+                <Row>
+                  <Col xs={6} xsOffset={3} >
                     <div>
-                      <h3>Enter an excercise</h3>
+                      <ListGroup style={{ textAlign: "left" }}>
+                          <ListGroupItem style={{textAlign: "center", width: "70%", fontSize: "20px", margin: "auto"}}>Search for an Exercise</ListGroupItem>
+                        </ListGroup>
                     </div>
                   </Col>
                 </Row>

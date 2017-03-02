@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
 import { Button, Grid, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Link } from 'react-router'
+// import './../Home.css';
+
 
 class Home extends Component {
   render() {
     return (
       <div>
-
           <Grid>
             <Row>
-              <Col xs={6} xsOffset={5}>
+              <Col xs={4} xsOffset={4}>
                 <Link to="/searchmeal" >
-                  <Button bsStyle="primary">Search Meal</Button>
+                  <Button style={{ width: "100%" }} bsSize="large" >Add Meals</Button>
                 </Link>
               </Col>
             </Row>
             <Row>
-              <Col xs={6} xsOffset={5}>
+              <Col xs={4} xsOffset={4}>
                 <Link to="/searchexercise" >
-                <Button bsStyle="primary">Search Exercise</Button>
+                <Button style={{ width: "100%" }} bsSize="large">Add Exercise</Button>
               </Link>
               </Col>
             </Row>
             <Row>
 
-              <Col xs={6} xsOffset={5}>
+              <Col xs={4} xsOffset={4}>
                 <Link to="/summary" >
-                <Button bsStyle="primary">View Details</Button>
+                <Button style={{ width: "100%" }} bsSize="large">Daily Summaries</Button>
               </Link>
               </Col>
             </Row>

@@ -51,24 +51,26 @@ class ExerciseLog extends Component {
         <Grid>
           <Row>
             <Col xs={6} xsOffset={4} className="spacer">
+              <div style={{backgroundColor: "white", padding:"1%", width: "70%", borderRadius: "10px"}}>
               <h1>Exercise Log</h1>
+            </div>
             </Col>
           </Row>
           <Row>
-            <Col xs={6} xsOffset={4} className="spacer">
+            <Col xs={6} xsOffset={3} className="spacer">
               <h4>
                 <a href="/searchexercise">
-                  Add another exercise
+                <Button style={{ width: "80%" }} bsSize="large" bsStyle="warning">Add another exercise</Button>
                 </a>
               </h4>
             </Col>
           </Row>
           <Row>
             <Col>
-              <Table responsive>
+              <Table style={{backgroundColor:"white", borderRadius: "10px" }}responsive>
                 <thead>
                   <tr>
-                    <th></th>
+                    <th>Date</th>
                     <th></th>
                     <th>Activity</th>
                     <th>Duration</th>
@@ -76,22 +78,31 @@ class ExerciseLog extends Component {
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="exercise-table">
 
                   {
                     (this.state.myExercises).slice(0,50).map(ele => (
                       <tr key={ele.id}>
-                        <td>{ele.date}</td>
-                        <td><Image src={ele.photo}/></td>
-                        <td>{ele.exercise}</td>
+                        <td >{ele.date}</td>
+                        <td><Image style={{ width: "200px" }}src={ele.photo}/></td>
+                        <td className="exercise">{ele.exercise}</td>
                         <td>{ele.duration} minutes</td>
-                        <td>{ele.calories}</td>
-                        <td><Button onClick={() => this.removeExercise(ele.id)}><Glyphicon glyph="remove"/>Delete</Button></td>
+                        <td style={{fontSize: "20px", fontWeight: ""}}>{ele.calories}</td>
+                        <td><Button onClick={() => this.removeExercise(ele.id)}><Glyphicon style={{ color: "red" }} glyph="remove"/>Delete</Button></td>
                       </tr>
                     ))
                   }
                 </tbody>
               </Table>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} xsOffset={3} className="spacer">
+              <h4>
+                <a href="/searchexercise">
+                <Button style={{ width: "50%" }} bsSize="medium" bsStyle="warning">Add another exercise</Button>
+                </a>
+              </h4>
             </Col>
           </Row>
         </Grid>

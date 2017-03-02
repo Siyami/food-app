@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './../App.css';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import { Link } from 'react-router'
 import axios from 'axios';
 
 class App extends Component {
@@ -48,8 +49,7 @@ class App extends Component {
   render() {
     return (
       <div>
-
-        <Navbar className="Navbar" inverse collapseOnSelect>
+        <Navbar className="topnav" inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="/">Food App</a>
@@ -59,8 +59,10 @@ class App extends Component {
           <Navbar.Collapse>
 
             <Nav>
-              <NavItem eventKey={1} href="#">Link</NavItem>
-              <NavItem eventKey={2} href="#">Link</NavItem>
+              <NavItem eventKey={1} onClick={() => browserHistory.push('/searchmeal')}>Add Meals</NavItem>
+              <NavItem eventKey={1} onClick={() => browserHistory.push('/searchexercise')}>Add Exercise</NavItem>
+              <NavItem eventKey={1} onClick={() => browserHistory.push('/summary')}>Daily Summaries</NavItem>
+              <NavItem eventKey={2} onClick={() => browserHistory.push('/exerciselog')}>Exercise Log</NavItem>
             </Nav>
 
             {this.state.isLoggedIn ? (
@@ -88,6 +90,23 @@ class App extends Component {
           }
         )}
 
+        <Navbar style={{marginTop: "10px"}} inverse collapseOnSelect fixedBottom>
+    <Navbar.Header>
+      <Navbar.Brand>
+
+      </Navbar.Brand>
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav>
+        <NavItem eventKey={1}></NavItem>
+
+      </Nav>
+      <Nav pullRight>
+        <NavItem eventKey={1} href="#">Link Right</NavItem>
+        <NavItem eventKey={2} href="#">Link Right</NavItem>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
       </div>
     );
   }
