@@ -148,7 +148,6 @@ class SearchMeal extends Component {
           <Row>
             <Col xs={6} xsOffset={3}>
             <form onSubmit={this.handleSubmit}>
-
                 <FormGroup bsSize="large" style={{backgroundColor: "white"}}>
                   <FormControl type="text"
                     className="mealinput"
@@ -157,7 +156,6 @@ class SearchMeal extends Component {
                     onChange={this.handleChange}
                     value={this.state.searchMeal}/>
                 </FormGroup>
-
               <Button bsSize="large" bsStyle="warning" style={{ width: "50%", marginBottom:"30px"}}  type="submit" value="Search Meal">Search</Button>
             </form>
             </Col>
@@ -169,20 +167,15 @@ class SearchMeal extends Component {
             ? (<Grid>
               <Row>
               <Col xs={12} md={4}>
-
                 <ListGroup style={{ textAlign: "left" }}>
                     <ListGroupItem style={{textAlign: "center", width: "70%", fontSize: "20px", margin: "auto"}}>Food Item</ListGroupItem>
                   </ListGroup>
-
-
                 <Thumbnail src={this.state.photo} alt="242x200">
                   <h3 style={{textTransform: "capitalize"}}>{this.state.foodName}</h3>
                   <p>{`Serving Unit: ${this.state.servingUnit}`}</p>
                   <p>{`Serving Quantity: ${this.state.servingQuantity}`}</p>
                   <p>{`Consumed At: ${this.state.date}`}</p>
-
                     <Button bsStyle="danger" onClick={this.addItemToList}>Add to the Meal</Button>&nbsp;
-
                     <DropdownButton bsStyle="warning" title="Change Quantity" id="dropdown-size-medium">
                       <MenuItem eventKey="1">1</MenuItem>
                       <MenuItem eventKey="2">2</MenuItem>
@@ -190,7 +183,6 @@ class SearchMeal extends Component {
                       <MenuItem eventKey="4">4</MenuItem>
                       <MenuItem eventKey="5">5</MenuItem>
                     </DropdownButton>
-
                 </Thumbnail>
               </Col>
               <Col xs={12} md={8} >
@@ -241,17 +233,16 @@ class SearchMeal extends Component {
                       </tr>
                     </tbody>
                   </Table>
-<Button bsStyle="primary" onClick={() => {this.postMeal()}}>Save Meal</Button>                </Col>
+                  <Button bsStyle="primary" onClick={() => {this.postMeal()}}>Save Meal</Button>
+                </Col>
               </Row>
             </Grid>)
             : (<Grid>
               <Row>
                 <Col xs={6} xsOffset={3} md={8} mdOffset={2} style={{textAlign: "center"}}>
-
                   <ListGroup>
                       <ListGroupItem
                         style={{textAlign: "center",
-
                         fontSize: "20px",
                         margin: "auto"}}>
                         Please search for a food item.<br/>
