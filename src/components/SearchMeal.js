@@ -3,11 +3,9 @@ import { Table, Grid, Row, Col, Thumbnail, Button, DropdownButton, MenuItem, For
 import axios from 'axios';
 let moment = require('moment');
 import { browserHistory } from 'react-router';
-
 class SearchMeal extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       searchMeal: '',
       searchedMeal: {},
@@ -17,27 +15,21 @@ class SearchMeal extends Component {
       servingUnit: '',
       date: ''
     };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addItemToList = this.addItemToList.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.calc = this.calc.bind(this);
     this.postMeal = this.postMeal.bind(this);
-
   }
-
   handleChange(event) {
     const nextState = {
       [event.target.name]: event.target.value
     };
-
     this.setState(nextState);
   }
-
   handleSubmit(event) {
     event.preventDefault();
-
     axios({
       method: 'post',
       url: 'https://trackapi.nutritionix.com//v2/natural/nutrients',
@@ -54,7 +46,6 @@ class SearchMeal extends Component {
     })
     .then(({data}) => {
       // console.log(data.foods[0]);
-
       this.setState({
         searchedMeal:
         {
@@ -90,16 +81,13 @@ class SearchMeal extends Component {
     .catch((err) => {
       console.log(err);
     });
-
     //Reset the form
     this.setState({
       searchMeal: ''
     });
   }
-
   addItemToList() {
     const newMeals = this.state.addedMeals.concat([this.state.searchedMeal])
-
     const totals = {
       saturatedFat: this.calc(newMeals, 'saturatedFat'),
       sodium: this.calc(newMeals, 'sodium'),
@@ -110,14 +98,11 @@ class SearchMeal extends Component {
       totalFat: this.calc(newMeals, 'totalFat'),
       calories: this.calc(newMeals, 'calories')
     }
-
     this.setState({
       addedMeals: newMeals,
       totals
     })
-
   }
-
   removeItem(meal) {
     // console.log(meal);
     let index = this.state.addedMeals.indexOf(meal)
@@ -132,14 +117,12 @@ class SearchMeal extends Component {
       protein: this.calc(newArr, 'protein'),
       totalFat: this.calc(newArr, 'totalFat'),
       calories: this.calc(newArr, 'calories')
-
     }
     this.setState({
       addedMeals: newArr,
       totals
     })
   }
-
   // Post totals for a meal to meals table
   postMeal() {
     axios({
@@ -158,99 +141,95 @@ class SearchMeal extends Component {
       console.log(err);
     })
   }
-
   render() {
     return (
       <div>
         <Grid>
           <Row>
             <Col xs={6} xsOffset={3}>
-              <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
 
-                  <FormGroup bsSize="large" style={{backgroundColor: "white"}}>
-                    <FormControl type="text"
-                      className="mealinput"
-                      style={{ width: "100%", borderColor: "darkorange" }}
-                      name="searchMeal"
-                      onChange={this.handleChange}
-                      value={this.state.searchMeal}/>
-                  </FormGroup>
+                <FormGroup bsSize="large" style={{backgroundColor: "white"}}>
+                  <FormControl type="text"
+                    className="mealinput"
+                    style={{ width: "100%", borderColor: "darkorange" }}
+                    name="searchMeal"
+                    onChange={this.handleChange}
+                    value={this.state.searchMeal}/>
+                </FormGroup>
 
-                <Button bsSize="large" bsStyle="warning" style={{ width: "50%", marginBottom:"30px"}}  type="submit" value="Search Meal">Search</Button>
-              </form>
+              <Button bsSize="large" bsStyle="warning" style={{ width: "50%", marginBottom:"30px"}}  type="submit" value="Search Meal">Search</Button>
+            </form>
             </Col>
           </Row>
         </Grid>
-
         <div>
           {
             (this.state.photo)
             ? (<Grid>
               <Row>
-                <Col xs={12} md={4}>
+              <Col xs={12} md={4}>
 
-                  <ListGroup style={{ textAlign: "left" }}>
-                      <ListGroupItem style={{textAlign: "center", width: "70%", fontSize: "20px", margin: "auto"}}>Food Item</ListGroupItem>
-                    </ListGroup>
+                <ListGroup style={{ textAlign: "left" }}>
+                    <ListGroupItem style={{textAlign: "center", width: "70%", fontSize: "20px", margin: "auto"}}>Food Item</ListGroupItem>
+                  </ListGroup>
 
 
-                  <Thumbnail src={this.state.photo} alt="242x200">
-                    <h3 style={{textTransform: "capitalize"}}>{this.state.foodName}</h3>
-                    <p>{`Serving Unit: ${this.state.servingUnit}`}</p>
-                    <p>{`Serving Quantity: ${this.state.servingQuantity}`}</p>
-                    <p>{`Consumed At: ${this.state.date}`}</p>
+                <Thumbnail src={this.state.photo} alt="242x200">
+                  <h3 style={{textTransform: "capitalize"}}>{this.state.foodName}</h3>
+                  <p>{`Serving Unit: ${this.state.servingUnit}`}</p>
+                  <p>{`Serving Quantity: ${this.state.servingQuantity}`}</p>
+                  <p>{`Consumed At: ${this.state.date}`}</p>
 
-                      <Button bsStyle="danger" onClick={this.addItemToList}>Add to the Meal</Button>&nbsp;
+                    <Button bsStyle="danger" onClick={this.addItemToList}>Add to the Meal</Button>&nbsp;
 
-                      <DropdownButton bsStyle="warning" title="Change Quantity" id="dropdown-size-medium">
-                        <MenuItem eventKey="1">1</MenuItem>
-                        <MenuItem eventKey="2">2</MenuItem>
-                        <MenuItem eventKey="3">3</MenuItem>
-                        <MenuItem eventKey="4">4</MenuItem>
-                        <MenuItem eventKey="5">5</MenuItem>
-                      </DropdownButton>
+                    <DropdownButton bsStyle="warning" title="Change Quantity" id="dropdown-size-medium">
+                      <MenuItem eventKey="1">1</MenuItem>
+                      <MenuItem eventKey="2">2</MenuItem>
+                      <MenuItem eventKey="3">3</MenuItem>
+                      <MenuItem eventKey="4">4</MenuItem>
+                      <MenuItem eventKey="5">5</MenuItem>
+                    </DropdownButton>
 
-                  </Thumbnail>
-                </Col>
-
-                <Col xs={12} md={8} >
-                  <ListGroup>
-                      <ListGroupItem style={{textAlign: "center", width: "50%", fontSize: "20px", margin: "auto"}}>Nutritional Data</ListGroupItem>
-                    </ListGroup>
-                  <Table style={{backgroundColor: "white", borderRadius: "10px"}} bordered condensed hover responsive>
-                    <thead>
-                      <tr>
-                        <th>Meal Item</th>
-                        <th>Sat. Fat</th>
-                        <th>Sodium</th>
-                        <th>Carbs</th>
-                        <th>Sugar</th>
-                        <th>Fiber</th>
-                        <th>Protein</th>
-                        <th>Fat</th>
-                        <th>Calories</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {this.state.addedMeals.map((meal) => {
-                        return (
-                          <tr>
-                            <td style={{fontSize: "20px", textTransform: "capitalize"}}>{meal.foodName}</td>
-                            <td>{meal.saturatedFat}</td>
-                            <td>{meal.sodium}</td>
-                            <td>{meal.carbonhydrate}</td>
-                            <td>{meal.sugar}</td>
-                            <td>{meal.fiber}</td>
-                            <td>{meal.protein}</td>
-                            <td>{meal.totalFat}</td>
-                            <td>{meal.calories}</td>
-                            <td><Button onClick={() => {this.removeItem(meal)}}><Glyphicon style={{ color: "red" }} glyph="remove"/>Remove</Button></td>
-                          </tr>
+                </Thumbnail>
+              </Col>
+              <Col xs={12} md={8} >
+                <ListGroup>
+                    <ListGroupItem style={{textAlign: "center", width: "50%", fontSize: "20px", margin: "auto"}}>Nutritional Data</ListGroupItem>
+                  </ListGroup>
+                <Table style={{backgroundColor: "white", borderRadius: "10px"}} bordered condensed hover responsive>
+                  <thead>
+                    <tr>
+                      <th>Meal Item</th>
+                      <th>Sat. Fat</th>
+                      <th>Sodium</th>
+                      <th>Carbs</th>
+                      <th>Sugar</th>
+                      <th>Fiber</th>
+                      <th>Protein</th>
+                      <th>Fat</th>
+                      <th>Calories</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.addedMeals.map((meal) => {
+                      return (
+                        <tr>
+                          <td style={{fontSize: "20px", textTransform: "capitalize"}}>{meal.foodName}</td>
+                          <td>{meal.saturatedFat}</td>
+                          <td>{meal.sodium}</td>
+                          <td>{meal.carbonhydrate}</td>
+                          <td>{meal.sugar}</td>
+                          <td>{meal.fiber}</td>
+                          <td>{meal.protein}</td>
+                          <td>{meal.totalFat}</td>
+                          <td>{meal.calories}</td>
+                          <td><Button onClick={() => {this.removeItem(meal)}}><Glyphicon style={{ color: "red" }} glyph="remove"/>Remove</Button></td>
+                        </tr>
                         )
                       })}
                       <tr>
-<<<<<<< HEAD
-                          {/* <td>Total</td>
+                          <td>Total</td>
                           <td>{this.state.totals.saturatedFat}</td>
                           <td>{this.state.totals.sodium}</td>
                           <td>{this.state.totals.carbonhydrate}</td>
@@ -260,48 +239,27 @@ class SearchMeal extends Component {
                           <td>{this.state.totals.totalFat}</td>
                           <td>{this.state.totals.calories}</td>
                       </tr>
-                    </Table>
-                    </tbody> */}
-                  {/* <Button bsStyle="primary" onClick={() => {this.postMeal()}}>Save Meal</Button> */}
-=======
-                          <td style={{textTransform: "uppercase"}}>Total</td>
-                          <td>{this.calc('saturatedFat')} g</td>
-                          <td>{this.calc('sodium')} mg</td>
-                          <td>{this.calc('carbonhydrate')} g</td>
-                          <td>{this.calc('sugar')} g</td>
-                          <td>{this.calc('fiber')} g</td>
-                          <td>{this.calc('protein')} g</td>
-                          <td>{this.calc('totalFat')} g</td>
-                          <td>{this.calc('calories')} g</td>
-                      </tr>
                     </tbody>
                   </Table>
-                  <div style={{textAlign: "right"}}>
-                  <Button bsSize="large" bsStyle="danger">Save Meal</Button>
-                </div>
-                </Col>
+<Button bsStyle="primary" onClick={() => {this.postMeal()}}>Save Meal</Button>                </Col>
               </Row>
             </Grid>)
-
             : (<Grid>
-                <Row>
-                  <Col xs={6} xsOffset={3} md={8} mdOffset={2} style={{textAlign: "center"}}>
+              <Row>
+                <Col xs={6} xsOffset={3} md={8} mdOffset={2} style={{textAlign: "center"}}>
 
-                    <ListGroup>
-                        <ListGroupItem
-                          style={{textAlign: "center",
+                  <ListGroup>
+                      <ListGroupItem
+                        style={{textAlign: "center",
 
-                          fontSize: "20px",
-                          margin: "auto"}}>
-                          Please search for a food item.<br/>
-                          <span style={{fontSize: "smaller", color: "charcoal"}}>Example: "1 egg", "pineapple", "veggie burger", "3 Snickers Bars" etc</span>
-                        </ListGroupItem>
-                      </ListGroup>
-
-
-
-                  </Col>
-                </Row>
+                        fontSize: "20px",
+                        margin: "auto"}}>
+                        Please search for a food item.<br/>
+                        <span style={{fontSize: "smaller", color: "charcoal"}}>Example: "1 egg", "pineapple", "veggie burger", "3 Snickers Bars" etc</span>
+                      </ListGroupItem>
+                    </ListGroup>
+                </Col>
+              </Row>
               </Grid>)
           }
         </div>
@@ -314,5 +272,4 @@ class SearchMeal extends Component {
     }, 0)
   }
 }
-
 export default SearchMeal;
