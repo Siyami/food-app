@@ -35,6 +35,7 @@ app.use('/api', require('./routes/token'));
 app.use('/api', authorize, require('./routes/exercises'));
 app.use('/api', require('./routes/summary'));
 app.use('/api', authorize, require('./routes/meals'));
+app.use('/api', authorize, require('./routes/users_meals_exercises'));
 
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
