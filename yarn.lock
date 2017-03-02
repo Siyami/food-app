@@ -3852,7 +3852,13 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   dependencies:
     minimist "0.0.8"
 
-moment@2.x.x:
+moment-timezone@^0.5.11:
+  version "0.5.11"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.11.tgz#9b76c03d8ef514c7e4249a7bbce649eed39ef29f"
+  dependencies:
+    moment ">= 2.6.0"
+
+moment@2.x.x, "moment@>= 2.6.0", moment@^2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
@@ -4785,6 +4791,15 @@ react-bootstrap@^0.30.7:
     uncontrollable "^4.0.1"
     warning "^3.0.0"
 
+react-datepicker@^0.41.1:
+  version "0.41.1"
+  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-0.41.1.tgz#21c26cc3821bee01eb6deb650880fa98f44588ec"
+  dependencies:
+    classnames "^2.2.5"
+    moment "^2.17.1"
+    react-onclickoutside "^5.9.0"
+    tether "^1.4.0"
+
 react-dev-utils@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-0.4.2.tgz#ba6fae581fe945a2fc402e9b27c71fda4f62f6a1"
@@ -4804,6 +4819,14 @@ react-dom@^15.4.2:
     fbjs "^0.8.1"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+
+react-moment@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.2.2.tgz#349e284ad0483ab6ec109a244586e401ce9d6b50"
+
+react-onclickoutside@^5.9.0:
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-5.9.0.tgz#c47bb506384adc98d686d134b34412ed17b97437"
 
 react-overlays@^0.6.10:
   version "0.6.11"
@@ -5596,6 +5619,10 @@ test-exclude@^2.1.1:
     object-assign "^4.1.0"
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
+
+tether@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.0.tgz#0f9fa171f75bf58485d8149e94799d7ae74d1c1a"
 
 text-table@~0.2.0:
   version "0.2.0"
