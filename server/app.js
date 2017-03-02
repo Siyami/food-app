@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
+const boom = require('boom');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
@@ -31,7 +32,7 @@ const authorize = function(req, res, next) {
 
 app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/token'));
-app.use('/api', require('./routes/exercises'));
+app.use('/api', authorize, require('./routes/exercises'));
 // app.use('/api', require('/.routes/summary'));
 app.use('/api', authorize, require('./routes/meals'));
 

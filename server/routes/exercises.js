@@ -21,6 +21,7 @@ router.get('/exercises', (_req, res, next) => {
 router.post('/exercises', (req, res, next) => {
   knex('exercises')
     .insert({
+      user_id:req.claim.userId,
       date: req.body.date,
       photo: req.body.photo,
       exercise: req.body.exercise,
