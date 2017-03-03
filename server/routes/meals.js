@@ -20,10 +20,10 @@ router.get('/meals', (_req, res, next) => {
 
 router.post('/meals', (req, res, next) => {
 
-  const { saturatedFat, sodium, carbonhydrate, sugar, fiber, protein, totalFat, calories } = req.body.totals;
-  const { date } = req.body;
+  const { saturatedFat, sodium, carbonhydrate, sugar, fiber, protein, totalFat, mealCalories } = req.body.totals;
+  const { mealDate } = req.body;
 
-  const insertMeal = { user_id:req.claim.userId, date, saturatedFat, sodium, carbonhydrate, sugar, fiber, protein, totalFat, calories };
+  const insertMeal = { user_id:req.claim.userId, mealDate, saturatedFat, sodium, carbonhydrate, sugar, fiber, protein, totalFat, mealCalories };
 
   knex('meals')
     .insert(insertMeal, '*')

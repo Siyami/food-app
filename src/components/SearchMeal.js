@@ -13,7 +13,7 @@ class SearchMeal extends Component {
       photo: '',
       foodName: '',
       servingUnit: '',
-      date: ''
+      mealDate: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,7 +49,7 @@ class SearchMeal extends Component {
       this.setState({
         searchedMeal:
         {
-          calories: data.foods[0].nf_calories,
+          mealCalories: data.foods[0].nf_calories,
           cholesterol: data.foods[0].nf_cholesterol,
           fiber: data.foods[0].nf_dietary_fiber,
           potassium: data.foods[0].nf_potassium,
@@ -65,7 +65,7 @@ class SearchMeal extends Component {
         foodName: data.foods[0].food_name,
         servingUnit: data.foods[0].serving_unit,
         servingQuantity: data.foods[0].serving_qty,
-        date: moment()._d.toString().slice(0,15),
+        mealDate: moment()._d.toString().slice(0,15),
         totals: {
           saturatedFat: 0,
           sodium: 0,
@@ -74,7 +74,7 @@ class SearchMeal extends Component {
           fiber: 0,
           protein: 0,
           totalFat: 0,
-          calories: 0
+          mealCalories: 0
         }
       })
     })
@@ -96,7 +96,7 @@ class SearchMeal extends Component {
       fiber: this.calc(newMeals, 'fiber'),
       protein: this.calc(newMeals, 'protein'),
       totalFat: this.calc(newMeals, 'totalFat'),
-      calories: this.calc(newMeals, 'calories')
+      mealCalories: this.calc(newMeals, 'mealCalories')
     }
     this.setState({
       addedMeals: newMeals,
@@ -116,7 +116,7 @@ class SearchMeal extends Component {
       fiber: this.calc(newArr, 'fiber'),
       protein: this.calc(newArr, 'protein'),
       totalFat: this.calc(newArr, 'totalFat'),
-      calories: this.calc(newArr, 'calories')
+      mealCalories: this.calc(newArr, 'mealCalories')
     }
     this.setState({
       addedMeals: newArr,
@@ -131,7 +131,7 @@ class SearchMeal extends Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      data: { totals: this.state.totals, date: moment()._d.toString().slice(0,15)}
+      data: { totals: this.state.totals, mealDate: moment()._d.toString().slice(0,15)}
     })
     .then((res) => {
       console.log(res);
@@ -184,7 +184,7 @@ class SearchMeal extends Component {
                   <h3 style={{textTransform: "capitalize"}}>{this.state.foodName}</h3>
                   <p>{`Serving Unit: ${this.state.servingUnit}`}</p>
                   <p>{`Serving Quantity: ${this.state.servingQuantity}`}</p>
-                  <p>{`Consumed At: ${this.state.date}`}</p>
+                  <p>{`Consumed At: ${this.state.mealDate}`}</p>
                     <Button bsStyle="danger" onClick={this.addItemToList}>Add to the Meal</Button>&nbsp;
 
 
@@ -228,7 +228,7 @@ class SearchMeal extends Component {
                           <td>{meal.fiber}</td>
                           <td>{meal.protein}</td>
                           <td>{meal.totalFat}</td>
-                          <td>{meal.calories}</td>
+                          <td>{meal.mealCalories}</td>
                           <td><Button onClick={() => {this.removeItem(meal)}}><Glyphicon style={{ color: "red" }} glyph="remove"/>Remove</Button></td>
                         </tr>
                         )
@@ -242,7 +242,7 @@ class SearchMeal extends Component {
                           <td>{this.state.totals.fiber}</td>
                           <td>{this.state.totals.protein}</td>
                           <td>{this.state.totals.totalFat}</td>
-                          <td>{this.state.totals.calories}</td>
+                          <td>{this.state.totals.mealCalories}</td>
                       </tr>
                     </tbody>
                   </Table>
