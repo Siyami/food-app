@@ -33,7 +33,6 @@ const authorize = function(req, res, next) {
 app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/token'));
 app.use('/api', authorize, require('./routes/exercises'));
-app.use('/api', require('./routes/summary'));
 app.use('/api', authorize, require('./routes/meals'));
 app.use('/api', authorize, require('./routes/users_meals_exercises'));
 

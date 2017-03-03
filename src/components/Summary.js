@@ -49,42 +49,6 @@ class Summary extends Component {
         })
  }
 
- // console.log(this.state.meals[0]);
-
-//  calories
-// :
-// "672.11"
-// carbonhydrate
-// :
-// "38.11"
-// created_at
-// :
-// "2017-03-02T20:02:00.878Z"
-// date
-// :
-// "Thu Mar 02 2017"
-// fiber
-// :
-// "6.30"
-// id
-// :
-// 2
-// protein
-// :
-// "36.07"
-// saturatedFat
-// :
-// "8.72"
-// sodium
-// :
-// "1361.78"
-// sugar
-// :
-// "5.57"
-// totalFat
-// :
-// "41.57"
-
  render() {
    return (
      <div>
@@ -99,19 +63,26 @@ class Summary extends Component {
                            <h4>{meal.mealDate}</h4>
                            <div>
                              <h5 style={{fontWeight: "bold"}}>Nutrient Totals</h5>
-                             <p>Carbohydrate: {meal.carbonhydrate}g <br/>
-                             Fat: {meal.totalFat}g <br/>
-                             Protein: {meal.protein}g<br/>
-                             Fiber: {meal.fiber}g</p>
+                             <p>
+                               Carbohydrate: {meal.carbonhydrate}g <br/>
+                               Fat: {meal.totalFat}g<br/>
+                               Sat. Fat: {meal.saturatedFat}g<br/>
+                               Protein: {meal.protein}g<br/>
+                               Fiber: {meal.fiber}g<br/>
+                               Sodium: {meal.sodium}mg<br/>
+                               Sugar: {meal.sugar}g<br/>
+                             </p>
                            </div>
                            <h5 style={{fontWeight: "bold"}}>Energy Balance</h5>
+                           <p>You need 2000 Calories/day to maintain your weight</p>
                            <p>Calories consumed: {meal.mealCalories}<br/>
                            {this.state.exercises.map((exercise) => {
                              return (
                                <div>
                                  <p>Calories burned: {exercise.calories}</p>
-                                 <p>Result: {meal.mealCalories - exercise.calories}</p>
-
+                                 {((parseInt(meal.mealCalories) - parseInt(exercise.calories) - 2000)) < 0
+                                   ? (<p style={{color: "green", fontWeight: "bold"}}>Result: {(parseInt(meal.mealCalories) - parseInt(exercise.calories) - 2000) }</p>)
+                                 : (<p style={{color: "red", fontWeight: "bold"}}>Result: +{(parseInt(meal.mealCalories) - parseInt(exercise.calories) - 2000) }</p>)}
                                </div>
                              )
                            })}

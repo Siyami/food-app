@@ -228,7 +228,7 @@ class SearchMeal extends Component {
                         )
                       })}
                       <tr>
-                          <td>Total</td>
+                          <td style={{fontSize: "20px", textTransform: "capitalize"}}>TOTAL</td>
                           <td>{this.state.totals.saturatedFat}</td>
                           <td>{this.state.totals.sodium}</td>
                           <td>{this.state.totals.carbonhydrate}</td>
