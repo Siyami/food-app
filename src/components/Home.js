@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router'
-// import './../Home.css';
-
 
 class Home extends Component {
   render() {
@@ -10,29 +8,32 @@ class Home extends Component {
       <div>
           <Grid>
             <Row>
-              <Col xs={4} xsOffset={4}>
+              <Col xs={6} xsOffset={3} style={{marginBottom: "20px",
+              textAlign: "center"}}>
                 <Link to="/searchmeal" >
-                  <Button style={{ width: "100%" }} bsSize="large" >Add Meals</Button>
+                  <Button className="mainbuttons" style={{ width: "100%", borderColor: "#6C3049" }} bsSize="large" >Food</Button>
                 </Link>
               </Col>
             </Row>
             <Row>
-              <Col xs={4} xsOffset={4}>
+              <Col xs={6} xsOffset={3} style={{marginBottom: "20px",
+              textAlign: "center"}}>
                 <Link to="/searchexercise" >
-                <Button style={{ width: "100%" }} bsSize="large">Add Exercise</Button>
+                <Button className="mainbuttons" style={{ width: "100%", borderColor: "#6C3049" }} bsSize="large">Exercise</Button>
               </Link>
               </Col>
             </Row>
             <Row>
 
-              <Col xs={4} xsOffset={4}>
+              <Col xs={6} xsOffset={3} style={{marginBottom: "20px",
+              textAlign: "center"}}>
                 <Link to="/summary" >
-                <Button style={{ width: "100%" }} bsSize="large">Daily Summaries</Button>
+                <Button className="mainbuttons" style={{ width: "100%", borderColor: "#6C3049" }} bsSize="large">Daily Summaries</Button>
               </Link>
               </Col>
+              
             </Row>
           </Grid>
-
       </div>
     );
   }

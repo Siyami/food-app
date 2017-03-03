@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Row,Grid, Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
@@ -65,45 +65,45 @@ class Login extends Component {
   render() {
     return (
       <Grid>
-        <Form onSubmit={this.handleSubmit} horizontal style={{margin: "10% 20%"}}>
-          <FormGroup controlId="formHorizontalEmail">
-            {/* <Col componentClass={ControlLabel} sm={2}>
-              Email
-            </Col> */}
-            <Col sm={6}>
-              <FormControl
-                name="email"
-                type="email"
-                placeholder="Email"
-                onChange={this.handleChange}
-                value={this.state.email}
-              />
-            </Col>
-          </FormGroup>
+        <Row>
+          <Col xs={6} xsOffset={3}>
+            <Form onSubmit={this.handleSubmit} horizontal style={{margin: "10% 20%"}}>
 
-          <FormGroup controlId="formHorizontalPassword">
-            {/* <Col componentClass={ControlLabel} sm={2}>
-              Password
-            </Col> */}
-            <Col sm={6}>
-              <FormControl
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={this.handleChange}
-                value={this.state.password}
-              />
-            </Col>
-          </FormGroup>
+              <FormGroup controlId="formHorizontalEmail">
+                {/* <Col componentClass={ControlLabel} sm={2}>
+                  Email
+                </Col> */}
+                <FormControl
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                />
+              </FormGroup>
 
-          <FormGroup>
-            <Col smOffset={2} sm={10}>
-              <Button type="submit">
-                Log in
-              </Button>
-            </Col>
-          </FormGroup>
-        </Form>
+              <FormGroup controlId="formHorizontalPassword">
+                {/* <Col componentClass={ControlLabel} sm={2}>
+                  Password
+                </Col> */}
+                <FormControl
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  onChange={this.handleChange}
+                  value={this.state.password}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Button style={{width: "50%"}}bsSize="large" bsStyle="warning" type="submit">
+                  Log in
+                </Button>
+              </FormGroup>
+              
+            </Form>
+          </Col>
+        </Row>
       </Grid>
     )
   }

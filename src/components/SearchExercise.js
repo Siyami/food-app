@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Image, Button, FormControl, ControlLabel, ListGroup, ListGroupItem} from 'react-bootstrap'
+import {  Grid, Row, Col, Image, Button, FormControl, ControlLabel, ListGroup, ListGroupItem, FormGroup} from 'react-bootstrap'
 import axios from 'axios';
 var moment = require('moment');
 
@@ -46,9 +46,9 @@ class SearchExercise extends Component {
       data: {
         "query": `${this.state.exerciseName}${this.state.exerciseDuration}`,
         "gender": "female",
-        "weight_kg": 72,
-        "height_cm": 150,
-        "age": 22,
+        "weight_kg": 70,
+        "height_cm": 172,
+        "age": 25,
       },
       headers: {
         'Content-Type': "application/json",
@@ -102,94 +102,115 @@ class SearchExercise extends Component {
       <div>
         <Grid>
           <Row>
-
-           <Col xs={6} xsOffset={3} className="spacer">
+            <Col xs={6}
+              xsOffset={3}
+              className="spacer">
               <form onSubmit={this.handleSubmit}>
-                <div style={{textAlign: "left"}} className="spacer">
 
+                  <div className="spacer">
+                    <FormGroup>
+                    <FormControl  componentClass="select"
+                      bsSize="large"
+                      style={{width: "100%", margin: "auto"}}
+                      placeholder="select"
+                      onChange={this.handleChange}
+                      value={this.state.exerciseDuration}
+                      name="exerciseDuration">
+                      <option value=" 15 minutes">15 minutes</option>
+                      <option value=" 30 minutes">30 minutes</option>
+                      <option value=" 45 minutes">45 minutes</option>
+                      <option value=" 60 minutes">60 minutes</option>
+                      <option value=" 75 minutes">75 minutes</option>
+                      <option value=" 90 minutes ">90 minutes</option>
+                      <option value=" 120 minutes ">120 minutes</option>
+                    </FormControl>
+                  </FormGroup>
+                  </div>
 
-                        <FormControl bsSize="large" type="text" placeholder="Jane Doe" style={{ width: "100%" }} name="exerciseName" onChange={this.handleChange}
-                          value={this.state.exerciseName}/>
+                  <div className="spacer">
+                    <div className="spacer">
+                      <FormGroup bsSize="large">
+                      <FormControl style={{width: "100%", margin: "auto", borderColor: "darkorange" }}
+                        bsSize="large"
+                        type="text"
+                        name="exerciseName"
+                        onChange={this.handleChange}
+                        value={this.state.exerciseName}>
+                      </FormControl>
+                    </FormGroup>
+                      </div>
 
-                </div>
-                <div className="spacer">
+                    <Button style={{ width: "50%" }}
+                      className="mybtns"
+                      type="submit" value="Search"
+                      placeholder="enter an activity">Search</Button>
+                    </div>
+                  </form>
+                </Col>
+              </Row>
+            </Grid>
+            <div>
 
-                  <FormControl  componentClass="select"
-                    bsSize="large"
-                    style={{width: "70%", margin: "auto"}}
-                    placeholder="select"
-                    onChange={this.handleChange}
-                    value={this.state.exerciseDuration}
-                    name="exerciseDuration">
-                    <option value=" 15 minutes">15 minutes</option>
-                    <option value=" 30 minutes">30 minutes</option>
-                    <option value=" 45 minutes">45 minutes</option>
-                    <option value=" 60 minutes">60 minutes</option>
-                    <option value=" 75 minutes">75 minutes</option>
-                    <option value=" 90 minutes ">90 minutes</option>
-                    <option value=" 120 minutes ">120 minutes</option>
+              { (this.state.exercise) ? (
+                <Grid>
+                  <Row>
+                    <Col xs={6}
+                      xsOffset={3}
+                      className="spacer">
+                      <div style={{marginBottom: "80px" }} className="exercise">
+                        <h2>
+                          {this.state.exercise}!
+                        </h2>
+                        <h5>for {this.state.duration} minutes</h5>
+                        <Image style={{ margin: "auto", width: "200px" }}
+                          className="spacer"
+                          src={this.state.photo}
+                          rounded
+                          responsive />
+                          <h5>
+                            You burned <p style={{ color: "red" }}> <span style={{fontSize: "30px"}}>{this.state.calories} </span></p>calories
+                          </h5>
+                          <a href="/exerciselog">
+                          <Button style={{ width: "50%", marginBottom: "5%"}}
+                            className="mybtns"
+                            onClick={this.addExercise}>Add Exercise</Button>
+                          </a>
+                        </div>
+                      </Col>
+                      <Col xsHidden md={3}></Col>
+                    </Row>
+                  </Grid>
+                )
 
-                  </FormControl>
-                </div>
-                <div className="spacer">
-                  <Button style={{ width: "50%" }} bsSize="large" bsStyle="warning" type="submit" value="Search" placeholder="enter an activity">Search</Button>
-                </div>
-                </form>
-              </Col>
+                : (<Grid>
+                  <Row>
+                    <Col xs={6} xsOffset={3} md={8} mdOffset={2} style={{textAlign: "center"}}>
 
-            </Row>
-          </Grid>
-          <div>
-
-            { (this.state.exercise) ? (
+                      <ListGroup>
+                          <ListGroupItem
+                            style={{textAlign: "center",
+                            fontSize: "20px",
+                            margin: "auto"}}>
+                            Please search for an activity.<br/>
+                            <span style={{fontSize: "smaller", color: "charcoal"}}>
+                              <span style={{fontVariant: "small-caps"}}>
+                                Example</span>: "hiking", "vacuuming", "Bikram Yoga", etc.</span>
+                          </ListGroupItem>
+                        </ListGroup>
+                    </Col>
+                  </Row>
+                  </Grid>)
+                }
+              </div>
               <Grid>
                 <Row>
-                  <Col xs={6} xsOffset={3} className="spacer">
-                    <div className="exercise">
-                      <h1>
-                        {this.state.exercise}!
-                      </h1>
-
-                      <h3>for {this.state.duration} minutes</h3>
-                      <Image style={{ margin: "auto", width: "300px" }} className="spacer" src={this.state.photo}
-                        rounded
-                        responsive />
-                        <h2>
-                          You burned <p style={{ color: "red" }}> {this.state.calories} </p>calories
-                        </h2>
-                        <a href="/exerciselog">
-                        <Button style={{ width: "50%", marginBottom: "10px" }} bsSize="large" bsStyle="warning" onClick={this.addExercise}>Add Exercise</Button>
-                      </a>
-                      </div>
-                    </Col>
-                    <Col xsHidden md={3}></Col>
-                  </Row>
-                </Grid>
-              )
-              : (<Grid>
-                <Row>
-                  <Col xs={6} xsOffset={3} >
-                    <div>
-                      <ListGroup style={{ textAlign: "left" }}>
-                          <ListGroupItem style={{textAlign: "center", width: "70%", fontSize: "20px", margin: "auto"}}>Search for an Exercise</ListGroupItem>
-                        </ListGroup>
-                    </div>
+                  <Col>
                   </Col>
                 </Row>
-              </Grid>)
-            }
-          </div>
-          <Grid>
-            <Row>
-              <Col>
-
-              </Col>
-            </Row>
-          </Grid>
-
-        </div>
-      )
-    }
-  }
+              </Grid>
+            </div>
+          )
+        }
+      }
 
 export default SearchExercise;

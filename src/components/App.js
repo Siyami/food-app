@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './../App.css';
+
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router'
@@ -50,20 +51,26 @@ class App extends Component {
     return (
       <div>
         <Navbar className="topnav" inverse collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="/">Food App</a>
+          <Navbar.Header className="picdiv">
+            <Navbar.Brand >
+
+              <a href="/">
+
+              </a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
 
             <Nav>
-              <NavItem eventKey={1} onClick={() => browserHistory.push('/searchmeal')}>Add Meals</NavItem>
-              <NavItem eventKey={1} onClick={() => browserHistory.push('/searchexercise')}>Add Exercise</NavItem>
+              <NavItem eventKey={1} onClick={() => browserHistory.push('/searchmeal')}>Search Food</NavItem>
+              <NavItem eventKey={1} onClick={() => browserHistory.push('/searchexercise')}>Search Exercise</NavItem>
               <NavItem eventKey={1} onClick={() => browserHistory.push('/summary')}>Daily Summaries</NavItem>
               <NavItem eventKey={2} onClick={() => browserHistory.push('/exerciselog')}>Exercise Log</NavItem>
             </Nav>
+            <div className="picdiv">
+
+            </div>
 
             {this.state.isLoggedIn ? (
               <Nav pullRight>
@@ -71,7 +78,6 @@ class App extends Component {
               </Nav>
             ) : (
               <Nav pullRight>
-
                 <NavItem eventKey={1} onClick={() => browserHistory.push('/login')}>Log In</NavItem>
                 <NavItem eventKey={2} onClick={() => browserHistory.push('/signup')}>Sign Up</NavItem>
               </Nav>
@@ -86,27 +92,18 @@ class App extends Component {
         {React.cloneElement(
           this.props.children,
           {
-          setStateFromLoginComponent: this.setStateFromLoginComponent
+            setStateFromLoginComponent: this.setStateFromLoginComponent
           }
         )}
 
         <Navbar style={{marginTop: "10px"}} inverse collapseOnSelect fixedBottom>
-    <Navbar.Header>
-      <Navbar.Brand>
-
-      </Navbar.Brand>
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav>
-        <NavItem eventKey={1}></NavItem>
-
-      </Nav>
-      <Nav pullRight>
-        <NavItem eventKey={1} href="#">Link Right</NavItem>
-        <NavItem eventKey={2} href="#">Link Right</NavItem>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Navbar.Collapse>
+          </Navbar.Collapse>
+        </Navbar>
       </div>
     );
   }

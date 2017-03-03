@@ -60,7 +60,7 @@ class ExerciseLog extends Component {
             <Col xs={6} xsOffset={3} className="spacer">
               <h4>
                 <a href="/searchexercise">
-                <Button style={{ width: "80%" }} bsSize="large" bsStyle="warning">Add another exercise</Button>
+                <Button className="mybtns" style={{width: "60%"}} >Add an exercise</Button>
                 </a>
               </h4>
             </Col>
@@ -68,6 +68,7 @@ class ExerciseLog extends Component {
           <Row>
             <Col>
               <Table style={{backgroundColor:"white", borderRadius: "10px" }}responsive>
+
                 <thead>
                   <tr>
                     <th>Date</th>
@@ -79,9 +80,11 @@ class ExerciseLog extends Component {
                   </tr>
                 </thead>
                 <tbody className="exercise-table">
-
                   {
                     (this.state.myExercises).slice(0,50).map(ele => (
+
+
+
                       <tr key={ele.id}>
                         <td >{ele.date}</td>
                         <td><Image style={{ width: "200px" }}src={ele.photo}/></td>
@@ -94,15 +97,6 @@ class ExerciseLog extends Component {
                   }
                 </tbody>
               </Table>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} xsOffset={3} className="spacer">
-              <h4>
-                <a href="/searchexercise">
-                <Button style={{ width: "50%" }} bsSize="medium" bsStyle="warning">Add another exercise</Button>
-                </a>
-              </h4>
             </Col>
           </Row>
         </Grid>

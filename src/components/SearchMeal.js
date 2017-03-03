@@ -148,7 +148,10 @@ class SearchMeal extends Component {
           <Row>
             <Col xs={6} xsOffset={3}>
             <form onSubmit={this.handleSubmit}>
-                <FormGroup bsSize="large" style={{backgroundColor: "white"}}>
+
+
+                <FormGroup bsSize="large">
+
                   <FormControl type="text"
                     className="mealinput"
                     style={{ width: "100%", borderColor: "darkorange" }}
@@ -156,7 +159,10 @@ class SearchMeal extends Component {
                     onChange={this.handleChange}
                     value={this.state.searchMeal}/>
                 </FormGroup>
-              <Button bsSize="large" bsStyle="warning" style={{ width: "50%", marginBottom:"30px"}}  type="submit" value="Search Meal">Search</Button>
+
+
+              <Button className="mybtns" style={{ width: "70%", marginBottom:"30px"}}  type="submit" value="Search Meal">Search</Button>
+
             </form>
             </Col>
           </Row>
@@ -170,13 +176,20 @@ class SearchMeal extends Component {
                 <ListGroup style={{ textAlign: "left" }}>
                     <ListGroupItem style={{textAlign: "center", width: "70%", fontSize: "20px", margin: "auto"}}>Food Item</ListGroupItem>
                   </ListGroup>
-                <Thumbnail src={this.state.photo} alt="242x200">
+
+
+
+                <Thumbnail style={{marginBottom: "80px"}} src={this.state.photo} alt="242x200">
+
                   <h3 style={{textTransform: "capitalize"}}>{this.state.foodName}</h3>
                   <p>{`Serving Unit: ${this.state.servingUnit}`}</p>
                   <p>{`Serving Quantity: ${this.state.servingQuantity}`}</p>
                   <p>{`Consumed At: ${this.state.date}`}</p>
                     <Button bsStyle="danger" onClick={this.addItemToList}>Add to the Meal</Button>&nbsp;
-                    <DropdownButton bsStyle="warning" title="Change Quantity" id="dropdown-size-medium">
+
+
+                    <DropdownButton style={{color: "#F3F3F3", backgroundImage: "none", backgroundColor: "#6C3049"}} title="Change Quantity" id="dropdown-size-medium">
+
                       <MenuItem eventKey="1">1</MenuItem>
                       <MenuItem eventKey="2">2</MenuItem>
                       <MenuItem eventKey="3">3</MenuItem>
@@ -233,7 +246,13 @@ class SearchMeal extends Component {
                       </tr>
                     </tbody>
                   </Table>
-                  <Button bsStyle="primary" onClick={() => {this.postMeal()}}>Save Meal</Button>
+
+                  <div style={{textAlign: "right"}}>
+                    <a href="/summary">
+                  <Button style={{marginBottom: "80px"}} bsStyle="danger" onClick={() => {this.postMeal()}}>Save Meal</Button>
+                </a>
+                </div>
+
                 </Col>
               </Row>
             </Grid>)
@@ -246,7 +265,7 @@ class SearchMeal extends Component {
                         fontSize: "20px",
                         margin: "auto"}}>
                         Please search for a food item.<br/>
-                        <span style={{fontSize: "smaller", color: "charcoal"}}>Example: "1 egg", "pineapple", "veggie burger", "3 Snickers Bars" etc</span>
+                        <span style={{fontSize: "smaller", color: "charcoal"}}><span style={{fontVariant: "small-caps"}}>Example</span>: "1 egg", "pineapple", "veggie burger", "3 Snickers Bars" etc</span>
                       </ListGroupItem>
                     </ListGroup>
                 </Col>
