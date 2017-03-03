@@ -70,7 +70,7 @@ class Summary extends Component {
                                Protein: {meal.protein}g<br/>
                                Fiber: {meal.fiber}g<br/>
                                Sodium: {meal.sodium}mg<br/>
-                               Sugar: {meal.sugar}g<br/>
+                               {/* Sugar: {meal.sugar}g<br/> */}
                              </p>
                            </div>
                            <h5 style={{fontWeight: "bold"}}>Energy Balance</h5>

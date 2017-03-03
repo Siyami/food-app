@@ -45,7 +45,7 @@ class SearchMeal extends Component {
       }
     })
     .then(({data}) => {
-      // console.log(data.foods[0]);
+      console.log(data.foods[0]);
       this.setState({
         searchedMeal:
         {
@@ -183,6 +183,7 @@ class SearchMeal extends Component {
 
                   <h3 style={{textTransform: "capitalize"}}>{this.state.foodName}</h3>
                   <p>{`Serving Unit: ${this.state.servingUnit}`}</p>
+                  {/* <p>{`Serving Weight: ${this.state.servingUnit}`}</p> */}
                   <p>{`Serving Quantity: ${this.state.servingQuantity}`}</p>
                   <p>{`Consumed At: ${this.state.mealDate}`}</p>
 
@@ -203,7 +204,7 @@ class SearchMeal extends Component {
                       <th>Sat. Fat</th>
                       <th>Sodium</th>
                       <th>Carbs</th>
-                      <th>Sugar</th>
+                      {/* <th>Sugar</th> */}
                       <th>Fiber</th>
                       <th>Protein</th>
                       <th>Fat</th>
@@ -218,7 +219,7 @@ class SearchMeal extends Component {
                           <td>{meal.saturatedFat}</td>
                           <td>{meal.sodium}</td>
                           <td>{meal.carbonhydrate}</td>
-                          <td>{meal.sugar}</td>
+                          {/* <td>{meal.sugar}</td> */}
                           <td>{meal.fiber}</td>
                           <td>{meal.protein}</td>
                           <td>{meal.totalFat}</td>
@@ -232,7 +233,7 @@ class SearchMeal extends Component {
                           <td>{this.state.totals.saturatedFat}</td>
                           <td>{this.state.totals.sodium}</td>
                           <td>{this.state.totals.carbonhydrate}</td>
-                          <td>{this.state.totals.sugar}</td>
+                          {/* <td>{this.state.totals.sugar}</td> */}
                           <td>{this.state.totals.fiber}</td>
                           <td>{this.state.totals.protein}</td>
                           <td>{this.state.totals.totalFat}</td>
