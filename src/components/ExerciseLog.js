@@ -50,17 +50,13 @@ class ExerciseLog extends Component {
       <div>
         <Grid>
           <Row>
-            <Col xs={6} xsOffset={4} className="spacer">
-              <div style={{backgroundColor: "white", padding:"1%", width: "70%", borderRadius: "10px"}}>
+            <Col xs={3} xsOffset={4}>
+              <div className="spacer" style={{backgroundColor: "white", padding:"3px", width: "100%", borderRadius: "10px"}}>
               <h1>Exercise Log</h1>
             </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} xsOffset={3} className="spacer">
               <h4>
                 <a href="/searchexercise">
-                <Button className="mybtns" style={{width: "60%"}} >Add an exercise</Button>
+                <Button className="mybtns" style={{width: "100%", marginBottom: "10px"}} >Add an exercise</Button>
                 </a>
               </h4>
             </Col>

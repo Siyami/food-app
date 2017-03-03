@@ -161,7 +161,7 @@ class SearchMeal extends Component {
                 </FormGroup>
 
 
-              <Button className="mybtns" style={{ width: "70%", marginBottom:"30px"}}  type="submit" value="Search Meal">Search</Button>
+              <Button className="mybtns" style={{ width: "40%", marginBottom:"30px"}}  type="submit" value="Search Meal">Search</Button>
 
             </form>
             </Col>
@@ -248,7 +248,7 @@ class SearchMeal extends Component {
                   </Table>
 
                   <div style={{textAlign: "right"}}>
-                    <a href="/summary">
+                    <a href="/">
                   <Button style={{marginBottom: "80px"}} bsStyle="danger" onClick={() => {this.postMeal()}}>Save Meal</Button>
                 </a>
                 </div>
@@ -265,7 +265,7 @@ class SearchMeal extends Component {
                         fontSize: "20px",
                         margin: "auto"}}>
                         Please search for a food item.<br/>
-                        <span style={{fontSize: "smaller", color: "charcoal"}}><span style={{fontVariant: "small-caps"}}>Example</span>: "1 egg", "pineapple", "veggie burger", "3 Snickers Bars" etc</span>
+                        <span style={{fontSize: "smaller", color: "charcoal"}}><span style={{fontVariant: "small-caps", fontWeight: "bold"}}>Example</span>: 1 egg, pineapple, veggie burger, 3 Snickers Bars, etc</span>
                       </ListGroupItem>
                     </ListGroup>
                 </Col>

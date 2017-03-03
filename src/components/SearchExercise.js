@@ -111,7 +111,7 @@ class SearchExercise extends Component {
                     <FormGroup>
                     <FormControl  componentClass="select"
                       bsSize="large"
-                      style={{width: "100%", margin: "auto"}}
+                      style={{width: "50%", margin: "auto"}}
                       placeholder="select"
                       onChange={this.handleChange}
                       value={this.state.exerciseDuration}
@@ -130,7 +130,7 @@ class SearchExercise extends Component {
                   <div className="spacer">
                     <div className="spacer">
                       <FormGroup bsSize="large">
-                      <FormControl style={{width: "100%", margin: "auto", borderColor: "darkorange" }}
+                      <FormControl style={{width: "50%", margin: "auto", borderColor: "darkorange" }}
                         bsSize="large"
                         type="text"
                         name="exerciseName"
@@ -140,7 +140,7 @@ class SearchExercise extends Component {
                     </FormGroup>
                       </div>
 
-                    <Button style={{ width: "50%" }}
+                    <Button style={{ width: "40%" }}
                       className="mybtns"
                       type="submit" value="Search"
                       placeholder="enter an activity">Search</Button>
@@ -193,8 +193,8 @@ class SearchExercise extends Component {
                             margin: "auto"}}>
                             Please search for an activity.<br/>
                             <span style={{fontSize: "smaller", color: "charcoal"}}>
-                              <span style={{fontVariant: "small-caps"}}>
-                                Example</span>: "hiking", "vacuuming", "Bikram Yoga", etc.</span>
+                              <span style={{fontVariant: "small-caps", fontWeight: "bold"}}>
+                                Example</span>: hiking, vacuuming, Bikram Yoga, etc.</span>
                           </ListGroupItem>
                         </ListGroup>
                     </Col>

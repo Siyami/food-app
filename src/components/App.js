@@ -51,26 +51,25 @@ class App extends Component {
     return (
       <div>
         <Navbar className="topnav" inverse collapseOnSelect>
-          <Navbar.Header className="picdiv">
-            <Navbar.Brand >
 
-              <a href="/">
+          <Navbar.Header >
+            <a href="/">
+            <Navbar.Brand style={{marginTop: "8px"}} className="picdiv">
 
-              </a>
             </Navbar.Brand>
+          </a>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
 
             <Nav>
-              <NavItem eventKey={1} onClick={() => browserHistory.push('/searchmeal')}>Search Food</NavItem>
+              <NavItem style={{marginLeft: "10px"}} eventKey={1} onClick={() => browserHistory.push('/searchmeal')}>Search Food</NavItem>
               <NavItem eventKey={1} onClick={() => browserHistory.push('/searchexercise')}>Search Exercise</NavItem>
               <NavItem eventKey={1} onClick={() => browserHistory.push('/summary')}>Daily Summaries</NavItem>
               <NavItem eventKey={2} onClick={() => browserHistory.push('/exerciselog')}>Exercise Log</NavItem>
             </Nav>
-            <div className="picdiv">
 
-            </div>
+
 
             {this.state.isLoggedIn ? (
               <Nav pullRight>

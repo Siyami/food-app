@@ -102,8 +102,8 @@ background-color: white;
  }
 
  .mybtns{
-     /*text-shadow: none;
-     box-shadow: none;*/
+     text-shadow: none;
+     box-shadow: none;
      background-color: #6C3049;
      color: #F3F3F3;
      background-image: none;
@@ -128,5 +128,6 @@ background-color: white;
    width: 50px;
    background-size: contain;
    background-repeat: no-repeat;
-   margin-top: 3px;
+   padding-top: 20%;
+   transform: rotate(-deg)
 }
