@@ -185,17 +185,11 @@ class SearchMeal extends Component {
                   <p>{`Serving Unit: ${this.state.servingUnit}`}</p>
                   <p>{`Serving Quantity: ${this.state.servingQuantity}`}</p>
                   <p>{`Consumed At: ${this.state.mealDate}`}</p>
+
+                  <div style={{textAlign: "center"}}>
                     <Button bsStyle="danger" onClick={this.addItemToList}>Add to the Meal</Button>&nbsp;
+                  </div>
 
-
-                    <DropdownButton style={{color: "#F3F3F3", backgroundImage: "none", backgroundColor: "#6C3049"}} title="Change Quantity" id="dropdown-size-medium">
-
-                      <MenuItem eventKey="1">1</MenuItem>
-                      <MenuItem eventKey="2">2</MenuItem>
-                      <MenuItem eventKey="3">3</MenuItem>
-                      <MenuItem eventKey="4">4</MenuItem>
-                      <MenuItem eventKey="5">5</MenuItem>
-                    </DropdownButton>
                 </Thumbnail>
               </Col>
               <Col xs={12} md={8} >
@@ -247,11 +241,11 @@ class SearchMeal extends Component {
                     </tbody>
                   </Table>
 
-                  <div style={{textAlign: "right"}}>
+                  <div style={{textAlign: "center"}}>
                     <a href="/summary">
-                  <Button style={{marginBottom: "80px"}} bsStyle="danger" onClick={() => {this.postMeal()}}>Save Meal</Button>
-                </a>
-                </div>
+                      <Button style={{marginBottom: "80px"}} bsStyle="danger" onClick={() => {this.postMeal()}}>Save Meal</Button>
+                    </a>
+                  </div>
 
                 </Col>
               </Row>
