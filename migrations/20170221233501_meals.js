@@ -9,7 +9,7 @@ exports.up = function(knex) {
       .inTable('users')
       .onDelete('CASCADE')
       .index();
-    table.string('date').notNullable().defaultTo('');
+    table.string('mealDate').notNullable().defaultTo('');
     table.decimal('saturatedFat').notNullable().defaultTo(0);
     table.decimal('sodium').notNullable().defaultTo(0);
     table.decimal('carbonhydrate').notNullable().defaultTo(0);
@@ -17,7 +17,7 @@ exports.up = function(knex) {
     table.decimal('fiber').notNullable().defaultTo(0);
     table.decimal('protein').notNullable().defaultTo(0);
     table.decimal('totalFat').notNullable().defaultTo(0);
-    table.decimal('calories').notNullable().defaultTo(0);
+    table.decimal('mealCalories').notNullable().defaultTo(0);
     table.timestamps(true, true);
   });
 };

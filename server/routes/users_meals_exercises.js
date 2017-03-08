@@ -12,7 +12,7 @@ router.get('/users_meals_exercises', (req, res, next) => {
   knex('users')
     .innerJoin('meals', 'users.id', 'meals.user_id')
     .where('users.id', req.claim.userId)
-    .orderBy('date')
+    .orderBy('mealDate')
     .then((rows) => {
       meals = rows;
       return knex('users')
